@@ -2,23 +2,23 @@
   {
     "objectID": "posts/post-with-code/index.html",
     "href": "posts/post-with-code/index.html",
-    "title": "Post With Code",
+    "title": "Beer Market",
     "section": "",
-    "text": "This is a post with executable code.\n\n1 + 1\n\n[1] 2"
+    "text": "BeerMarkets &lt;- read_csv(\"https://bcdanl.github.io/data/beer_markets.csv\")\n\nRows: 73115 Columns: 24\n── Column specification ────────────────────────────────────────────────────────\nDelimiter: \",\"\nchr (13): _purchase_desc, brand, container, market, buyertype, income, age, ...\ndbl  (5): hh, quantity, dollar_spent, beer_floz, price_per_floz\nlgl  (6): promo, childrenUnder6, children6to17, microwave, dishwasher, singl...\n\nℹ Use `spec()` to retrieve the full column specification for this data.\nℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.\n\n\nrmarkdown::paged_table(BeerMarkets)"
   },
   {
     "objectID": "posts/welcome/index.html",
     "href": "posts/welcome/index.html",
     "title": "Welcome To My Blog",
     "section": "",
-    "text": "This is the first post in a Quarto blog. Welcome!\n\nSince this post doesn’t specify an explicit image, the first image in the post will be used in the listing page of posts."
+    "text": "Hello, this going to be my first blog post! My Name is Aidan Cameron I am a student at Geneseo and i am on the swim team.I live on Long island so i love to go in the ocean and surf.\n\nSince this post doesn’t specify an explicit image, the first image in the post will be used in the listing page of posts."
   },
   {
     "objectID": "posts/starwars/starwars_df.html",
     "href": "posts/starwars/starwars_df.html",
-    "title": "Starwars",
+    "title": "NYC Resturant",
     "section": "",
-    "text": "Let’s analyze the starwars data:"
+    "text": "NYC_Restaurant &lt;- read_csv(\"https://bcdanl.github.io/data/DOHMH_NYC_Restaurant_Inspection.csv\")\n\nrmarkdown::paged_table(NYC_Restaurant)\n\n\n\n  \n\n\n\n  ggplot(NYC_Restaurant) +\n  geom_boxplot(aes(x = SCORE, y = GRADE, fill = GRADE) ) +\n  facet_grid( `CRITICAL FLAG` ~ . )\n\n\n\n\n\nggplot(NYC_Restaurant) +\n  geom_histogram(aes(x = SCORE), binwidth = 1 ) +\n  facet_grid( `CRITICAL FLAG` ~ GRADE )\n\n\n\n\n\nggplot(NYC_Restaurant) +\n  geom_histogram(aes(x = SCORE), binwidth = 1 ) +\n  facet_grid( `CRITICAL FLAG` ~ GRADE, scales = 'free_x' )"
   },
   {
     "objectID": "posts/starwars/starwars_df.html#variable-description-for-starwars-data.frame",
@@ -37,9 +37,9 @@
   {
     "objectID": "posts/beer-markets/beer-markets.html",
     "href": "posts/beer-markets/beer-markets.html",
-    "title": "Beer Markets",
+    "title": "Spotify",
     "section": "",
-    "text": "Let’s analyze the beer_data data:"
+    "text": "Let’s analyze the Spotify data:\n\nSpotify &lt;- read_csv(\"https://bcdanl.github.io/data/spotify_all.csv\")\n\nrmarkdown::paged_table(Spotify) \n\n\n\n  \n\n\n\nQ1c &lt;- Spotify %&gt;% \n  group_by(artist_name) %&gt;% \n  mutate(n_popular_artist = n()) %&gt;% \n  ungroup() %&gt;% \n  mutate( artist_ranking = dense_rank( desc(n_popular_artist) ) ) %&gt;% \n  filter( artist_ranking &lt;= 10) \n  \n# boxplot\nggplot(Q1c,\n       aes(x = pos, y = fct_reorder(artist_name, -artist_ranking)) ) +\n  geom_boxplot() +\n  stat_summary(\n    fun = mean,\n    color = 'red'\n  )\n\n\n\n\n\nggplot(Q1c) +\n  geom_histogram(aes(x = pos), binwidth = 1) + \n  facet_grid(fct_reorder(artist_name, artist_ranking) ~ .  , switch = \"y\") +\n  theme(strip.text.y.left = element_text(angle = 0))\n\n\n\n\n\nQ1b &lt;- Spotify %&gt;% \n  group_by(artist_name) %&gt;% \n  mutate(n_popular_artist = n()) %&gt;% \n  ungroup() %&gt;% \n  mutate( artist_ranking = dense_rank( desc(n_popular_artist) ) ) %&gt;% \n  filter( artist_ranking &lt;= 5) %&gt;% \n  group_by(artist_name, track_name) %&gt;% \n  mutate(n_popular_track = n()) %&gt;% \n  group_by(artist_name) %&gt;% \n  mutate(track_ranking = dense_rank( desc(n_popular_track) ) ) %&gt;% \n  filter( track_ranking &lt;= 2) %&gt;%   # I just wanted to see the top two tracks for each artist\n  select(artist_name, artist_ranking, n_popular_artist, track_name, track_ranking, n_popular_track) %&gt;% \n  distinct() %&gt;% \n  arrange(artist_ranking, track_ranking)\n\nQ1b\n\n# A tibble: 10 × 6\n# Groups:   artist_name [5]\n   artist_name    artist_ranking n_popular_artist track_name  track_ranking\n   &lt;chr&gt;                   &lt;int&gt;            &lt;int&gt; &lt;chr&gt;               &lt;int&gt;\n 1 Drake                       1             2715 One Dance               1\n 2 Drake                       1             2715 Jumpman                 2\n 3 Kanye West                  2             1065 Gold Digger             1\n 4 Kanye West                  2             1065 Stronger                2\n 5 Kendrick Lamar              3             1035 HUMBLE.                 1\n 6 Kendrick Lamar              3             1035 DNA.                    2\n 7 Rihanna                     4              915 Needed Me               1\n 8 Rihanna                     4              915 Work                    2\n 9 The Weeknd                  5              913 Starboy                 1\n10 The Weeknd                  5              913 The Hills               2\n# ℹ 1 more variable: n_popular_track &lt;int&gt;"
   },
   {
     "objectID": "posts/beer-markets/beer-markets.html#variable-description-for-beer_data-data.frame",
@@ -81,28 +81,28 @@
     "href": "index.html",
     "title": "Aidan Cameron",
     "section": "",
-    "text": "Finley Malloc majors in Data Analytics at SUNY Geneseo. When not working on data analytics, Finley enjoys spending time unicycling and playing with her pet iguana."
+    "text": "State University of New York at Geneseo | Geneseo, NY  Finance Major | Aug 2021 - May 2027  Minor in Economics"
   },
   {
     "objectID": "index.html#education",
     "href": "index.html#education",
     "title": "Aidan Cameron",
-    "section": "Education",
-    "text": "Education\nState University of New York at Geneseo | Geneseo, NY  B.S. in Data Analytics | Aug 2022 - May 2026  Minor in Business Administration"
+    "section": "",
+    "text": "State University of New York at Geneseo | Geneseo, NY  Finance Major | Aug 2021 - May 2027  Minor in Economics"
   },
   {
     "objectID": "index.html#experience",
     "href": "index.html#experience",
     "title": "Aidan Cameron",
     "section": "Experience",
-    "text": "Experience\nStarbucks Analytics | Data Analyst Intern | May 2024 - Aug 2024"
+    "text": "Experience\nNone"
   },
   {
     "objectID": "blog-listing.html",
     "href": "blog-listing.html",
-    "title": "Insightful Analytics",
+    "title": "Aidan’s World",
     "section": "",
-    "text": "Order By\n       Default\n         \n          Title\n        \n         \n          Date - Oldest\n        \n         \n          Date - Newest\n        \n         \n          Author\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n  \n\n\n\n\nBeer Markets\n\n\n\n\n\n\n\n\n\nNov 2, 2023\n\n\nByeong-Hak Choe\n\n\n8 min\n\n\n\n\n\n\n  \n\n\n\n\nStarwars\n\n\n\n\n\n\n\n\n\nOct 30, 2023\n\n\nYour Name\n\n\n2 min\n\n\n\n\n\n\n  \n\n\n\n\nPost With Code\n\n\n\n\n\n\n\n\n\nOct 30, 2023\n\n\nYOUR NAME\n\n\n0 min\n\n\n\n\n\n\n  \n\n\n\n\nWelcome To My Blog\n\n\n\n\n\n\n\n\n\nOct 27, 2023\n\n\nYOUR NAME\n\n\n0 min\n\n\n\n\n\n\nNo matching items"
+    "text": "Order By\n       Default\n         \n          Title\n        \n         \n          Date - Oldest\n        \n         \n          Date - Newest\n        \n         \n          Author\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n  \n\n\n\n\nWelcome To My Blog\n\n\n\n\n\n\n\n\n\nDec 22, 2023\n\n\nAidan Cameron\n\n\n1 min\n\n\n\n\n\n\n  \n\n\n\n\nSpotify\n\n\n\n\n\n\n\n\n\nDec 12, 2023\n\n\nAidan Cameron\n\n\n3 min\n\n\n\n\n\n\n  \n\n\n\n\nNYC Resturant\n\n\n\n\n\n\n\n\n\nDec 12, 2023\n\n\nAidan Cameron\n\n\n2 min\n\n\n\n\n\n\n  \n\n\n\n\nNFL 2022\n\n\n\n\n\n\n\n\n\nDec 12, 2023\n\n\nAidan Cameron\n\n\n3 min\n\n\n\n\n\n\n  \n\n\n\n\nBeer Market\n\n\n\n\n\n\n\n\n\nOct 30, 2023\n\n\nAidan Cameron\n\n\n2 min\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "project.html",
@@ -124,5 +124,33 @@
     "title": "DANL Project",
     "section": "2.2 MPG and a Type of Cars",
     "text": "2.2 MPG and a Type of Cars\nThe following boxplot shows how the distribution of highway MPG (hwy) varies by a type of cars (class) 🚙 🚚 🚐.\n\nggplot(data = mpg) +\n  geom_boxplot(aes(x = class, y = hwy, fill = class),\n               show.legend = F) +\n  labs(x = \"Class\", y = \"Highway\\nMPG\")"
+  },
+  {
+    "objectID": "posts/NFL in 2022/NFL.html",
+    "href": "posts/NFL in 2022/NFL.html",
+    "title": "NFL 2022",
+    "section": "",
+    "text": "Q2\n\nNFL2022_stuffs &lt;- read_csv(\"https://bcdanl.github.io/data/NFL2022_stuffs.csv\")\n\nrmarkdown::paged_table(NFL2022_stuffs) \n\n\n\n  \n\n\n\nQ2a\n\nNFL2022_stuffs &lt;- subset(NFL2022_stuffs, !is.na(posteam))\n\nNFL2022_stuffs &lt;- NFL2022_stuffs[!is.na(NFL2022_stuffs$posteam), ]\n\n\n\nQ2b\n\nQ2b &lt;- NFL2022_stuffs %&gt;%\n  filter(wp &gt; 0.20 & wp &lt; 0.75 & down &lt;= 2 & half_seconds_remaining &gt; 120) %&gt;%\n  group_by(posteam) %&gt;%\n  summarize(mean_pass = mean(pass, na.rm = TRUE))\n\n# Print the resulting data frame\nprint(Q2b)\n\n# A tibble: 32 × 2\n   posteam mean_pass\n   &lt;chr&gt;       &lt;dbl&gt;\n 1 ARI         0.553\n 2 ATL         0.4  \n 3 BAL         0.520\n 4 BUF         0.604\n 5 CAR         0.458\n 6 CHI         0.420\n 7 CIN         0.657\n 8 CLE         0.491\n 9 DAL         0.474\n10 DEN         0.493\n# ℹ 22 more rows\n\n\n\n\nQ2c\n\nQ2c &lt;- Q2b %&gt;%\n  arrange(mean_pass)\n\n# ggplot code with geom_point()\nggplot(Q2c, aes(x = reorder(posteam, mean_pass), y = mean_pass)) +\n  geom_point() +\n  labs(\n    title = \"Mean Value of Pass for Each posteam\",\n    x = \"posteam\",\n    y = \"Mean Pass Value\"\n  ) +\n  theme_minimal() +\n  theme(axis.text.x = element_text(angle = 45, hjust = 1))  # Rotate x-axis labels for better readability\n\n\n\n\n\n\nQ2d\n\nNFL2022_epa &lt;- read_csv('https://bcdanl.github.io/data/NFL2022_epa.csv')\n\n\nNFL2022_stuffs_EPA &lt;- merge(NFL2022_stuffs, NFL2022_epa, all.x = TRUE)\n\nNFL2022_stuffs_EPA &lt;- subset(NFL2022_stuffs_EPA, !is.na(passer))\n\n\n\nQ2e\n\nggplot(NFL2022_stuffs_EPA, aes(x = week, y = epa, color = passer)) +\n  geom_line() +\n  geom_point() +\n  labs(title = \"NFL Weekly Trend of Mean EPA for J.Allen and P.Mahomes\",\n       x = \"Week\",\n       y = \"Mean EPA\") +\n  theme_minimal()\n\n\n\n\n\n\nQ2f\n\n# Calculate the mean EPA for each passer and week\nmean_epa_by_passer_week &lt;- NFL2022_stuffs_EPA %&gt;%\n  group_by(passer, week) %&gt;%\n  summarize(mean_epa = mean(epa, na.rm = TRUE))\n\n# Pivot the data to have passers as columns\nmean_epa_pivoted &lt;- pivot_wider(mean_epa_by_passer_week, names_from = passer, values_from = mean_epa)\n\n# Calculate the difference between the mean value of EPA for \"J.Allen\" and \"P.Mahomes\"\nmean_epa_pivoted$epa_difference &lt;- mean_epa_pivoted$J.Allen - mean_epa_pivoted$P.Mahomes\n\n# Display the result\nprint(mean_epa_pivoted)\n\n# A tibble: 22 × 116\n    week A.Brown A.Cooper A.Dalton A.Lee A.Rodgers B.Allen B.Berrios B.Gabbert\n   &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;\n 1    14  -0.251    NA     NA         NA  NA        NA         NA      NA     \n 2    18  -0.362    NA     -0.313     NA  -0.0936   NA         NA       0.0269\n 3     8  NA        -4.98   0.391     NA  -0.0138   NA         NA      NA     \n 4     4  NA        NA      0.222     NA  -0.0870   NA          1.18   NA     \n 5     5  NA        NA     -0.0888    NA   0.163    NA         NA      NA     \n 6     6  NA        NA      0.0660    NA  -0.200    NA         NA      NA     \n 7     7  NA        NA      0.0281    NA   0.00447  NA         NA      NA     \n 8     9  NA        NA     -0.130     NA  -0.136    -0.172     NA      NA     \n 9    10  NA        NA     -0.0575    NA   0.336    NA         NA      NA     \n10    11  NA        NA      0.381     NA   0.0661   NA         NA      NA     \n# ℹ 12 more rows\n# ℹ 107 more variables: B.Hoyer &lt;dbl&gt;, B.Mann &lt;dbl&gt;, B.Mayfield &lt;dbl&gt;,\n#   B.Perkins &lt;dbl&gt;, B.Purdy &lt;dbl&gt;, B.Rypien &lt;dbl&gt;, B.Zappe &lt;dbl&gt;,\n#   C.Beathard &lt;dbl&gt;, C.Claypool &lt;dbl&gt;, C.Daniel &lt;dbl&gt;, C.Henne &lt;dbl&gt;,\n#   C.Keenum &lt;dbl&gt;, C.Kirk &lt;dbl&gt;, C.Kupp &lt;dbl&gt;, C.Lamb &lt;dbl&gt;,\n#   C.McCaffrey &lt;dbl&gt;, C.McCoy &lt;dbl&gt;, C.Rush &lt;dbl&gt;, C.Streveler &lt;dbl&gt;,\n#   C.Wentz &lt;dbl&gt;, C.Wilson &lt;dbl&gt;, D.Adams &lt;dbl&gt;, D.Blough &lt;dbl&gt;, …\n\n\n\n\nQ2g"
+  },
+  {
+    "objectID": "posts/NFL in 2022/NFL.html#q2",
+    "href": "posts/NFL in 2022/NFL.html#q2",
+    "title": "NFL 2022",
+    "section": "",
+    "text": "NFL2022_stuffs &lt;- read_csv(\"https://bcdanl.github.io/data/NFL2022_stuffs.csv\")"
+  },
+  {
+    "objectID": "posts/NFL in 2022/NFL.html#q2a",
+    "href": "posts/NFL in 2022/NFL.html#q2a",
+    "title": "NFL 2022",
+    "section": "",
+    "text": "NFL2022_stuffs &lt;- subset(NFL2022_stuffs, !is.na(posteam))\n\nNFL2022_stuffs &lt;- NFL2022_stuffs[!is.na(NFL2022_stuffs$posteam), ]"
+  },
+  {
+    "objectID": "posts/NFL in 2022/NFL.html#q2b",
+    "href": "posts/NFL in 2022/NFL.html#q2b",
+    "title": "NFL 2022",
+    "section": "",
+    "text": "q2b &lt;- NFL2022_stuffs %&gt;%\n  filter(\n    wp &gt; 0.2 & wp &lt; 0.75,\n    down &lt;= 2,\n    half_seconds_remaining &gt; 120\n  ) %&gt;%\n  group_by(posteam) %&gt;%\n  summarise(mean_pass = mean(pass, na.rm = TRUE))\n  \nprint(q2b)\n\n# A tibble: 32 × 2\n   posteam mean_pass\n   &lt;chr&gt;       &lt;dbl&gt;\n 1 ARI         0.553\n 2 ATL         0.4  \n 3 BAL         0.520\n 4 BUF         0.604\n 5 CAR         0.458\n 6 CHI         0.420\n 7 CIN         0.657\n 8 CLE         0.491\n 9 DAL         0.474\n10 DEN         0.493\n# ℹ 22 more rows"
   }
 ]

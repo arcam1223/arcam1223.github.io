@@ -1,0 +1,4 @@
+"0","NFL2022_stuffs_EPA <- merge(NFL2022_stuffs, NFL2022_epa, all.x = TRUE)"
+"0",""
+"0","NFL2022_stuffs_EPA <- subset(NFL2022_stuffs_EPA, !is.na(passer))"
+"0",""

@@ -1,0 +1,3 @@
+"0","NFL2022_stuffs_EPA <- merge(NFL2022_stuffs, NFL2022_epa, by = c(""passer"", ""receiver"", ""epa""), all.x = TRUE)"
+"2","Error: object 'NFL2022_stuffs' not found
+"
