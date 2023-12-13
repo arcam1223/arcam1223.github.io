@@ -1,4 +1,10 @@
 
+    
+      https://github.com/arcam1223/arcam1223.github.io
+
+   
+      https://arcam1223.github.io/
+      
 ---
 title: "NFL 2022"
 author: "Aidan Cameron"
@@ -12,12 +18,6 @@ execute:
   
 toc: true
 ---
-
-
-      https://github.com/arcam1223/arcam1223.github.io
-
-   
-      https://arcam1223.github.io/
 ```{r}
 #| include: false
 
