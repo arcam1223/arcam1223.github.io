@@ -11,7 +11,7 @@
     "href": "posts/welcome/index.html",
     "title": "Welcome To My Blog",
     "section": "",
-    "text": "Hello, this going to be my first blog post! My Name is Aidan Cameron I am a student at Geneseo and i am on the swim team.I live on Long island so i love to go in the ocean and surf.\n\nSince this post doesn’t specify an explicit image, the first image in the post will be used in the listing page of posts."
+    "text": "Hello, this going to be my first blog post! My Name is Aidan Cameron I am a student at Geneseo and i am on the swim team.I live on Long island so i love to go in the ocean and surf."
   },
   {
     "objectID": "posts/starwars/starwars_df.html",
@@ -102,7 +102,7 @@
     "href": "blog-listing.html",
     "title": "Aidan’s World",
     "section": "",
-    "text": "Order By\n       Default\n         \n          Title\n        \n         \n          Date - Oldest\n        \n         \n          Date - Newest\n        \n         \n          Author\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n  \n\n\n\n\nNFL 2022\n\n\n\n\n\n\n\n\n\n3 min\n\n\n\n\n\n\n  \n\n\n\n\nWelcome To My Blog\n\n\n\n\n\n\n\n\n\nDec 22, 2023\n\n\nAidan Cameron\n\n\n1 min\n\n\n\n\n\n\n  \n\n\n\n\nSpotify\n\n\n\n\n\n\n\n\n\nDec 12, 2023\n\n\nAidan Cameron\n\n\n3 min\n\n\n\n\n\n\n  \n\n\n\n\nNYC Resturant\n\n\n\n\n\n\n\n\n\nDec 12, 2023\n\n\nAidan Cameron\n\n\n2 min\n\n\n\n\n\n\n  \n\n\n\n\nNFL 2022\n\n\n\n\n\n\n\n\n\nDec 12, 2023\n\n\nAidan Cameron\n\n\n3 min\n\n\n\n\n\n\n  \n\n\n\n\nBeer Market\n\n\n\n\n\n\n\n\n\nOct 30, 2023\n\n\nAidan Cameron\n\n\n2 min\n\n\n\n\n\n\nNo matching items"
+    "text": "Order By\n       Default\n         \n          Title\n        \n         \n          Date - Oldest\n        \n         \n          Date - Newest\n        \n         \n          Author\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n  \n\n\n\n\nWelcome To My Blog\n\n\n\n\n\n\n\n\n\nDec 22, 2023\n\n\nAidan Cameron\n\n\n1 min\n\n\n\n\n\n\n  \n\n\n\n\nSpotify\n\n\n\n\n\n\n\n\n\nDec 12, 2023\n\n\nAidan Cameron\n\n\n3 min\n\n\n\n\n\n\n  \n\n\n\n\nNYC Resturant\n\n\n\n\n\n\n\n\n\nDec 12, 2023\n\n\nAidan Cameron\n\n\n2 min\n\n\n\n\n\n\n  \n\n\n\n\nNFL 2022\n\n\n\n\n\n\n\n\n\nDec 12, 2023\n\n\nAidan Cameron\n\n\n3 min\n\n\n\n\n\n\n  \n\n\n\n\nBeer Market\n\n\n\n\n\n\n\n\n\nOct 30, 2023\n\n\nAidan Cameron\n\n\n2 min\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "project.html",
