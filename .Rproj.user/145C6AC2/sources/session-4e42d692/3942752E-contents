@@ -198,10 +198,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 
-<pre><code>  https://github.com/arcam1223/arcam1223.github.io
+<pre><code>- icon: linkedin
+  text: github repository 
+  href: https://github.com/arcam1223/arcam1223.github.io
 
-
-  https://arcam1223.github.io/
+- icon: linkedin
+  text: arcam1223.github.io/
+  href: https://arcam1223.github.io/
+  
   </code></pre>
 <section id="q2" class="level1">
 <h1>Q2</h1>
