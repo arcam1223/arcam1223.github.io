@@ -1,0 +1,7 @@
+"0","p3 <- swimming %>%"
+"0","  filter( team_code %in% c(""USA"", ""RUS"", ""AUS"", ""BRA"", ""ITA"", ""FRA"", ""JPN"", ""GBR"", ""HUN"", ""NED""))"
+"0","ggplot(data = p3, aes(y = team_short_name)) +"
+"0","  geom_bar(fill = ""lightblue"", color = ""black"") +"
+"0","  ggtitle(""Bar Plot of Team Frequencies"") +"
+"0","  xlab(""Country"") +"
+"0","  ylab(""Frequency"")"
